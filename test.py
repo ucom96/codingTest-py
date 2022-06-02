@@ -107,6 +107,12 @@ print(max(lst[1:])) #0번째 원소를 기준으로 max를 뽑아냄
 print(max(lst[1:])[0]) #9
 print(max(lst2)[1]) #6
 '''
+'''
 lst = []
 if lst:
   print("hi")
+'''
+
+stack =[9]
+print(stack[-1],stack.pop())
+print(stack.pop(),stack[-1])

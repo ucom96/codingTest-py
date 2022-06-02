@@ -1,24 +1,20 @@
-#뒤에 더 크기가 더 작은 원소가 있다면 가격이 떨어진것
-#뒤에 크기가 더 작은 원소가 없다면 가격이 떨어지지 않은것
-#1차시도) 시간초과 O(n^2)이므로 시간초과가 뜨는데 min()을 쓰지 않고 뒤에 원소들과 비교할 수 있는 방법이 있는건가?
-
+#현재 가격과 이후의 가격들을 비교한다
+#이후의 가격중에 현재 가격보다 작은 것이 있다면 그 가격의 인덱스에서 현재 가격 인덱스를 빼준다
+#이후의 가격중에 현재 가격보다 작은 것이 없다면 총 prices 배열 크기에서 현재 가격 인덱스를 빼준다
+#1차시도) 실패
+#원인) 시간복잡도가 매우 크게 나옴.. min(), indexing, index() 모두 O(N)이 걸리는데 한줄에 쓰면 O(N^3)이 되어 시간이 매우 오래 걸릴것
 def solution(prices):
-    answer = []
-    lth = len(prices)
-    #가격이 떨어진다 = prices 배열에서 자신 이후의 원소들 중 더 작은 원소가 있을 경우
-    #매번 배열의 뒤 원소들의 크기를 체크해야함 = O(n^2)
-    for idx, price in enumerate(prices):
-      after = prices[idx+1:]
-      if idx == lth-1:
-        answer.append(lth-(idx+1))
-      else:
-        smallestPrice = min(after)
-        if price > smallestPrice:
-          answer.append(prices.index(smallestPrice,idx+1)-idx)
-        else:
-          answer.append(lth-(idx+1))
-        
-    return answer
+  length = len(prices)
+  answer = [0]*length #0을 안넣으면 indexError
+  for now_idx in range(length):
+    nxt_idx = prices.index(min(prices[now_idx:]),now_idx)
+    print(now_idx,nxt_idx)
+    if now_idx == nxt_idx:
+      answer[now_idx]=length-1-now_idx
+    else:
+      answer[now_idx]=nxt_idx-now_idx
+    
+  return answer
   
 prices = [1,2,3,2,3]
 print(solution(prices))
