@@ -14,7 +14,6 @@
 
 def solution(s):
     result = len(s)
-
     for step in range(1,len(s)//2+1):
         #print('step',step)
         #매 단위마다 새롭게 생성될 문자열
