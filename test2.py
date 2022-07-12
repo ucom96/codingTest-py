@@ -2,6 +2,8 @@
 
 str = "hello"
 
+
+
 print(str[4:7])
 print(str[6:7])
 
