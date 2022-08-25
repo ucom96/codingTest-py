@@ -113,6 +113,10 @@ if lst:
   print("hi")
 '''
 
+'''
 stack =[9]
 print(stack[-1],stack.pop())
 print(stack.pop(),stack[-1])
+'''
+
+print(2 % 3)
