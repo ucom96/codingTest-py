@@ -1,6 +1,11 @@
-computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+dic = {}
 
-for idx,nxt in enumerate(computers[0]):
-    print(idx,nxt)
+dic['hi'] = 2
+dic['hi']=3
 
+print(dic)
+
+#error
+a,b = [1,2,3]
+print(a,b)
 
