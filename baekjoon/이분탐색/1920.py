@@ -1,8 +1,9 @@
-#2:55~
-n= int(input())
+#2:55~3:23
+#성공
+n = int(input())
 n_nums = list(map(int, input().split()))
 
-m= int(input())
+m = int(input())
 m_nums = list(map(int, input().split()))
 
 n_nums.sort()
@@ -15,9 +16,10 @@ def binary_search(l,r,x):
         return 1
     else:
         if n_nums[mid]>x:
-            binary_search(l,mid-1,x)
+            #주의)여기서 return을 꼭 붙여줄것! 다음 호출의 반환값이 반환되어야 하기 때문에
+            return binary_search(l,mid-1,x)
         elif n_nums[mid]<x:
-            binary_search(mid+1,r,x)
+            return binary_search(mid+1,r,x)
 
 for x in m_nums:
     print(binary_search(0,len(n_nums)-1,x))
