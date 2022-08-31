@@ -1,31 +1,22 @@
-def solution(s):
-    answer = len(s)
+def solution(numbers, target):
+    answer = 0
 
-    for unit in range(1, len(s)//2+1):
-        cnt =1 
-        compressed = ""
-        now_str = s[:unit]
-        for idx in range(unit,len(s), unit):
-            nxt_str = s[idx: idx+unit]
-            if now_str == nxt_str:
-                cnt+=1
-            else:
-                if cnt == 1:
-                    compressed += now_str
-                else:
-                    compressed += str(cnt) + now_str
-                now_str = nxt_str
-                cnt = 1
-        if cnt == 1:
-            compressed += now_str
-        else:
-            compressed += str(cnt) + now_str
+    def dfs(result, idx):
+        nonlocal answer
+        #종료조건
+        if idx == len(numbers):
+            if result == target:
+                answer+=1
+            return
+        dfs(result + numbers[idx], idx+1)
+        dfs(result - numbers[idx], idx+1)
     
-        if answer > len(compressed):
-            answer = len(compressed)
+    dfs(0,0)
+    
     return answer
 
-s = "abcabcdede"
+numbers = [1, 1, 1, 1, 1]
+target = 3
 
-print(solution(s))
+print(solution(numbers, target))
 

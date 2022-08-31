@@ -12,6 +12,3 @@ def solution(phone_book):
 phone_book = ["119", "97674223", "1195524421"]
 
 print(solution(phone_book))
-
-print("11901".startswith("119"))
-print("911901".startswith("119"))
